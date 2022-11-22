@@ -18,7 +18,7 @@ import { devices } from '@playwright/test';
 }
 
  const headed = process.env.PWHEADED === "true";
- const launchOptions: LaunchOptions = headed ? { slowMo: 1000 } : {};
+ const launchOptions: LaunchOptions = headed ? { slowMo: 200 } : {};
 
 const config: PlaywrightTestConfig = {
   testDir: './test',
@@ -58,12 +58,12 @@ const config: PlaywrightTestConfig = {
 
   /* Configure projects for major browsers */
   projects: [
-    {
+   /* {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],launchOptions
       },
-    },
+    },*/
 
     {
       name: 'firefox',
