@@ -15,8 +15,6 @@ export class RegisterPage {
   readonly getPrivacyCheckbox: Locator;
   readonly getContinueButton: Locator;
 
-  openCartPage: OpenCartPage;
-  registrationPage: RegisterPage;
 
 
   constructor(page: Page) {
@@ -34,26 +32,26 @@ export class RegisterPage {
 
   }
 
-  async fillOutRegistration(page) {
-    this.openCartPage = new OpenCartPage(page);
+  async fillOutRegistration() {
+    //this.openCartPage = new OpenCartPage(page);
     let name: string;
     let password = (Math.random() + 1).toString(36).substring(7);
 
-    await this.openCartPage.getStarted();
-    await expect(this.openCartPage.getDesktopsLink).toBeVisible();
-    await this.openCartPage.openRegistration();
+    //await this.openCartPage.getStarted();
+    //await expect(this.openCartPage.getDesktopsLink).toBeVisible();
+    //await this.openCartPage.openRegistration();
 
     let randomValues: RandomValues;
     randomValues = new RandomValues();
     name = await randomValues.generateName("male") ?? "";
 
 
-    await this.registrationPage.getFirstNameTextBox.type(name.split(" ")[0]);
-    await this.registrationPage.getLastNameTextBox.type(name.split(" ")[1]);
-    await this.registrationPage.getEmailTextBox.type(name.replace(" ", "") + "\@gmail.com");
-    await this.registrationPage.getPasswordTextBox.type(password);
-    await this.registrationPage.getSubscribeRadio.click();
-    await this.registrationPage.getPrivacyCheckbox.check();
-    await this.registrationPage.getContinueButton.click();
+    await this.getFirstNameTextBox.type(name.split(" ")[0]);
+    await this.getLastNameTextBox.type(name.split(" ")[1]);
+    await this.getEmailTextBox.type(name.replace(" ", "") + "\@gmail.com");
+    await this.getPasswordTextBox.type(password);
+    await this.getSubscribeRadio.click();
+    await this.getPrivacyCheckbox.check();
+    await this.getContinueButton.click();
   }
 }

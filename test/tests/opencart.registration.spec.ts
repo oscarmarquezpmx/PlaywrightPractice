@@ -8,10 +8,9 @@ test.describe(' Registration Test', () => {
 
   test.beforeEach(async ({ page }) => {
     openCartPage = new OpenCartPage(page);
-    registrationPage = new RegisterPage(page);
+
 
     await page.goto("https://demo.opencart.com");
-    //await openCartPage.goto();
 
     await openCartPage.getStarted();
     await openCartPage.getDesktopsLink.click();
@@ -21,8 +20,10 @@ test.describe(' Registration Test', () => {
 
 
   test('open registration form and enter the required details', async ({ page }) => {
+    registrationPage = new RegisterPage(page);
 
-    registrationPage.fillOutRegistration(page)
+    await openCartPage.openRegistration();
+    await registrationPage.fillOutRegistration()
   });
 
 });
